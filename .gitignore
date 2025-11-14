@@ -1,0 +1,57 @@
+# Node / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# build outputs
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc
+.vault/
+*.pem
+*.key
+*.crt
+
+# GitHub Actions cache
+.github/workflows/.cache
+
+# Optional: local Redis / mongo sockets / runtime
+redis-stderr.log
+redis-server.pid
+
+# Docker (if you add Dockerfile later)
+docker-compose.override.yml
+.env.docker
