@@ -1,13 +1,13 @@
 import app from "./server";
 import config from "./config";
 import { connectMongoose } from "./db/mongoose";
-import { getRedisClient } from "./db/redis";
+import { getRedis } from "./db/redis";
 
 async function bootstrap() {
   try {
     await connectMongoose();
     // Init redis connection
-    const redis = getRedisClient();
+    const redis = getRedis();
     // optionally ping if redis is enabled and supports ping
     if (redis && typeof (redis as any).ping === "function") {
       try {

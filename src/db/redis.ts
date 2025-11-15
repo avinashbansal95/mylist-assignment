@@ -3,20 +3,20 @@ import config from "../config";
 
 let client: Redis | null = null;
 
-export function getRedisClient() {
+export function getRedis() {
   if (!client) {
-    if (!config.redisUrl || !config.redisToken) {
-      console.warn("REDIS_URL or REDIS_TOKEN not set. Redis disabled.");
-      return null;
-    }
-
-    client = new Redis({
-      url: config.redisUrl,
-      token: config.redisToken,
-    });
-
-    console.log("Upstash Redis initialized");
+    if (!config.redisUrl || !config.redisToken) return null;
+    client = new Redis({ url: config.redisUrl, token: config.redisToken });
   }
-
   return client;
+}
+
+export function versionKeyForUser(userId: string) {
+  return `mylist:${userId}:version`;
+}
+export function pageKey(userId: string, cursorKey: string, version: number) {
+  return `mylist:${userId}:page:${cursorKey}:v${version}`;
+}
+export function lockKey(userId: string, cursorKey: string) {
+  return `mylist:lock:${userId}:${cursorKey}`;
 }
